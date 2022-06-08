@@ -1,0 +1,35 @@
+create table users
+(
+    userid varchar2(20) PRIMARY KEY,
+    pw varchar2(20) not null,
+    name varchar2(11),
+    phone varchar2(20),
+    regdate Date
+);
+create table board
+(
+	bnum number(10) PRIMARY KEY, 	--글번호
+	userid varchar2(20) not null, 	--작성자 fk
+	title varchar2(20) not null,	--글제목
+	content varchar2(20) not null,	--글내용
+	count number(10),				--조회수
+	likecount number(10),			--추천순
+	boarddate date					--작성일
+)
+
+-- FK BOARD 테이블에 제약조건 추가
+alter table board
+add constraint userid foreign Key(userid) references users(userid);
+
+
+
+
+-- 시퀀스 추가
+CREATE SEQUENCE BOARD_SEQ
+	INCREMENT BY 1
+	START WITH 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE
+    NOCACHE
+    NOORDER;
