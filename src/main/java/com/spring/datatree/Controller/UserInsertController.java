@@ -12,7 +12,7 @@ import com.spring.datatree.Vo.UsersVo;
 @Controller
 public class UserInsertController {
 
-	@Autowired UsersService service;
+	//@Autowired UsersService service;
 	
 	@RequestMapping(value = "/user/insert", method = RequestMethod.GET)
 	public ModelAndView ViewPage() {
@@ -28,12 +28,7 @@ public class UserInsertController {
 		mv.setViewName("user/InsertUser");
 		System.out.println(vo.toString());
 		
-		int test = service.UserInsert(vo);
-		
-		System.out.println("Secces : " + test);
-		
-		// 오토와이어드에서 에러뜸 ㅡㅡ
-		
+
 		return mv;
 	}
 }
