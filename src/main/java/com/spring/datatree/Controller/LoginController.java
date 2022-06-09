@@ -11,10 +11,16 @@ public class LoginController {
 	@RequestMapping(value="login",method=RequestMethod.GET)
 	public ModelAndView UserLoginView() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("User/Login");
+		mv.setViewName("login");
 		return mv;
 	}
-	
-	
+	@RequestMapping(value="login",method=RequestMethod.POST)
+	public String test() {
+		return "home";
+	}
+	@RequestMapping(value="logout",method=RequestMethod.GET)
+	public String UserLogout() {
+		return "logout";
+	}
 
 }

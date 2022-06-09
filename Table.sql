@@ -1,11 +1,29 @@
+-- 유저테이블 시큐리티 적용테이블
 create table users
 (
     userid varchar2(20) PRIMARY KEY,
     pw varchar2(20) not null,
     name varchar2(11),
     phone varchar2(20),
-    regdate Date
+    regdate Date,
+    enabled char(1) default '1'
 );
+
+
+-- 유저 권한테이블
+create table users_authority
+(
+    userid varchar2(20) not null,
+    authority varchar2(50) not null,
+    constraint fk_authority_users  foreign key(userid) references users(userid)
+);
+
+
+-- 유니크인덱스
+create unique index ix_auth_userid on users_authority ( userid , authority );
+
+
+-- 게시판테이블
 create table board
 (
 	bnum number(10) PRIMARY KEY, 	--글번호
@@ -15,7 +33,7 @@ create table board
 	count number(10),				--조회수
 	likecount number(10),			--추천순
 	boarddate date					--작성일
-)
+);
 
 -- FK BOARD 테이블에 제약조건 추가
 alter table board
@@ -33,3 +51,7 @@ CREATE SEQUENCE BOARD_SEQ
     NOCYCLE
     NOCACHE
     NOORDER;
+
+
+
+
