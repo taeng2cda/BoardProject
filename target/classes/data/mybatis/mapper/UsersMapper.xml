@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="data.mybatis.mapper.UsersMapper">
 
-	<resultMap type="com.spring.datetree.Security.CustomUserDetail" id="UserDetail">
+	<resultMap type="com.spring.datatree.Security.CustomUserDetail" id="UserDetail">
 		<id property="userid" column="userid"/>
 		<result property="password" column="password"/>
 		<result property="enabled" column="enabled"/>

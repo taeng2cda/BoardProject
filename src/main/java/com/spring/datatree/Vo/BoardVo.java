@@ -2,6 +2,7 @@ package com.spring.datatree.Vo;
 
 import java.sql.Date;
 
+
 public class BoardVo {
 	
 	private int bnum;

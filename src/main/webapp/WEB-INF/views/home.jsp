@@ -10,11 +10,9 @@
 </head>
 <body>
 asdasdasf
-${message }
 
 <c:choose>
 	<c:when test="${userid != null }">
-		${userid }님 환영합니다<br>
 		
 		<a href="${pageContext.request.contextPath}/board/list" >게시글 보러가기</a>
 		<a href="${pageContext.request.contextPath}/user/insert">회원가입</a>

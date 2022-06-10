@@ -10,7 +10,9 @@
 	<!-- 암호화 객체 -->
 	<bean id="passwordEncoding" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	
-	
+	<!-- TEST -->
+	<!--  <bean id="customuserDetailService" class=""/> -->
+		
 	<!-- 요청에 따른 권한 설정 -->
 	<sec:http>
 		<!-- 권한 설정 -->
