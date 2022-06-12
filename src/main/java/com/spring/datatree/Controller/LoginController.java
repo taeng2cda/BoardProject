@@ -1,25 +1,18 @@
 package com.spring.datatree.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LoginController {
 
-	@RequestMapping(value="login",method=RequestMethod.GET)
-	public ModelAndView UserLoginView() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("login");
-		return mv;
+	@GetMapping("/login")
+	public String login() {
+		return "login";
 	}
-	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String test() {
-		return "home";
-	}
-	@RequestMapping(value="logout",method=RequestMethod.GET)
-	public String UserLogout() {
+	
+	@GetMapping("/logout")
+	public String logout() {
 		return "logout";
 	}
 

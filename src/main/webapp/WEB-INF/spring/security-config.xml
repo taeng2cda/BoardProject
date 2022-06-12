@@ -9,22 +9,17 @@
 	
 	<!-- 암호화 객체 -->
 	<bean id="passwordEncoding" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="customuserDetailService" class="com.spring.datatree.Security.CustomUserDetailService"/>
 	
-	<!-- TEST -->
-	<!--  <bean id="customuserDetailService" class=""/> -->
-		
 	<!-- 요청에 따른 권한 설정 -->
 	<sec:http>
 		<!-- 권한 설정 -->
-		<sec:intercept-url pattern="/authority_member/**" access="hasRole('ROLE_MEMBER')"/>
+		<sec:intercept-url pattern="/authority_user/**" access="hasRole('ROLE_MEMBER')"/>
 		<sec:intercept-url pattern="/authority_admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<sec:intercept-url pattern="/**" access="permitAll"/>
 		<!-- 로긴 페이지 설정 -->
 		<sec:form-login login-page="/login"/>
-		<!-- 로그아웃 설정  
-		invalidate-session="true" : 로그아웃시 세션 초기화 할건지? 디폴트값은 true 굳이 코드 추가 없어도 됨
-		logout-success-url : 로그아웃시 이동될 페이지
-		-->
+		<!-- 로그아웃 설정  -->
 		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/"/>
 		<sec:form-login/>
 	</sec:http>
@@ -33,7 +28,7 @@
 	<!-- 인증매니져 설정 -->
 	<sec:authentication-manager>
 		<sec:authentication-provider user-service-ref="customuserDetailService">
-			<sec:password-encoder ref="passwordEncoder"/>
+			<sec:password-encoder ref="passwordEncoding"/>
 		</sec:authentication-provider>
 	</sec:authentication-manager>	
 	

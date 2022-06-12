@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <h1>회원 가입</h1>
 
 <div id="box1">
-	<form action="${pageContext.request.contextPath}/user/insert" method="post">
+	<form:form method="post" action="${pageContext.request.contextPath}/user/insert">
 	        <fieldset>
 	            <ul>
 	                <li>
@@ -47,7 +48,7 @@
 	            </ul>
 	        </fieldset>
 	        <input type="submit" value="회원 가입" id="btn">
-	</form> 
+	</form:form>
 </div>
 </body>
 </html>

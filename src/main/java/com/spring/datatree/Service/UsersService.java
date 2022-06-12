@@ -13,13 +13,30 @@ import data.mybatis.mapper.UsersMapper;
 public class UsersService {
 	
 	@Autowired private UsersMapper mapper;
-	//@Autowired private PasswordEncoder pwec;
+	@Autowired private PasswordEncoder passwordEncoder;
 	
-	public CustomUserDetail hetAuths(String userid) {
+	public CustomUserDetail getAuths(String userid) {
 		return mapper.getAuths(userid);
 	}
 	public int UserInsert(UsersVo vo) {
-		return mapper.UserInsert(vo);
+		String pw = vo.getPw();
+		vo.setPw(passwordEncoder.encode(pw));
+		mapper.UserInsert(vo);
+		
+		Users_AuthorityVo auth = new Users_AuthorityVo();
+		auth.setUserid(vo.getUserid());
+		
+		if(vo.getUserid().equals("admin")) {
+			auth.setAuthority("ROLE_ADMIN");
+			mapper.AuthInsert(auth);
+			auth.setAuthority("ROLE_MEMBER");
+			mapper.AuthInsert(auth);
+		}else {
+			auth.setAuthority("ROLE_MEMBER");
+			mapper.AuthInsert(auth);
+		}
+		return 1;
+		
 	}
 	public int AuthInsert(Users_AuthorityVo vo) {
 		return mapper.AuthInsert(vo);
