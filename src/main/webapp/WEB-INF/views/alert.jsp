@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+    alert("${msg}");
+    location.href = "${pageContext.request.contextPath}/login/View";
+</script>
+
 <body>
 
 </body>

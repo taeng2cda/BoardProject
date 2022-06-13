@@ -13,7 +13,7 @@
 <ul>
 	<li><a href="${pageContext.request.contextPath}/user/insert">회원가입</a></li>
 	<sec:authorize access="isAnonymous()">
-		<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
+		<li><a href="${pageContext.request.contextPath}/login/View">로그인</a></li>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
 		<li>
@@ -27,7 +27,9 @@
 	<li><a href="${pageContext.request.contextPath}/board">게시판</a></li>
 </ul>
 
-
+<br>
+test<br>
+${userid}
 
 </body>
 </html>

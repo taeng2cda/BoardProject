@@ -13,9 +13,9 @@
 
 <form:form method="post" action="${pageContext.request.contextPath}/login">
 	아이디 <br>
-	<input type="text" name="username"><br>
+	<input type="text" name="userid" value=""><br>
 	비밀번호 <br>
-	<input type="password" name="password"><br>
+	<input type="password" name="pw"><br>
 	<input type="submit" value="로그인">
 </form:form>
 
