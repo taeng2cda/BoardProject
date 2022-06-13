@@ -31,7 +31,7 @@ create table board
 	title varchar2(20) not null,	--글제목
 	content varchar2(20) not null,	--글내용
 	count number(10),				--조회수
-	likecount number(10),			--추천순
+	updatedate date,				--수정일
 	boarddate date					--작성일
 );
 

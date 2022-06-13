@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +10,8 @@
 <body>
 <h1>로그아웃</h1>
 
-<form method="post" action="${pageContext.request.contextPath}/logout">
-토큰값 히든으로 보내서 post 방식으로 서브밋
-<input type="text" name="" >
-
-<input type="submit" name="" value="로그인">
-</form>
+<form:form method="post" action="${pageContext.request.contextPath}/logout">
+	<input type="submit" value="로그아웃">
+</form:form>
 </body>
 </html>

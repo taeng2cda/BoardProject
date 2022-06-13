@@ -18,6 +18,7 @@ public class UsersService {
 	public CustomUserDetail getAuths(String userid) {
 		return mapper.getAuths(userid);
 	}
+	
 	public int UserInsert(UsersVo vo) {
 		String pw = vo.getPw();
 		vo.setPw(passwordEncoder.encode(pw));
@@ -38,6 +39,7 @@ public class UsersService {
 		return 1;
 		
 	}
+	
 	public int AuthInsert(Users_AuthorityVo vo) {
 		return mapper.AuthInsert(vo);
 	}

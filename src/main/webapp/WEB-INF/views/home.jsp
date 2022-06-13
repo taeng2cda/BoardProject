@@ -9,31 +9,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-asdasdasf
 
-<c:choose>
-	<c:when test="${userid != null }">
-		
-		<a href="${pageContext.request.contextPath}/board/list" >게시글 보러가기</a>
-		<a href="${pageContext.request.contextPath}/user/insert">회원가입</a>
-		<a href="${pageContext.request.contextPath}/logout" >로그아웃</a>
-	</c:when>
-	<c:otherwise>
-		<a href="${pageContext.request.contextPath}/login" >로그인</a>
-		<a href="${pageContext.request.contextPath}/user/insert">회원가입</a>
-		
-	</c:otherwise>
-</c:choose>
+<ul>
+	<li><a href="${pageContext.request.contextPath}/user/insert">회원가입</a></li>
+	<sec:authorize access="isAnonymous()">
+		<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
+	</sec:authorize>
+	<sec:authorize access="isAuthenticated()">
+		<li>
+		<sec:authentication property="principal.username"/>님 반갑습니다.
+		<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+		</li>
+	</sec:authorize>
+	
+	<li><a href="${pageContext.request.contextPath}/authority_admin/main">main(member)</a></li>
+	<li><a href="${pageContext.request.contextPath}/authority_user/main">main(admin)</a></li>
+	<li><a href="${pageContext.request.contextPath}/board">게시판</a></li>
+</ul>
 
-		 test <br>
-		 <sec:authorize access="isAuthenticated()"> <!-- 인증된 사용자 -->
-		 <h1>인증된 사용자</h1>
-		 <sec:authentication property="principal.username"/>님 반갑습니다.
-		 </sec:authorize>
-		 
-		 <sec:authorize access="isAnonymous()"> <!-- 인증되지 않은 사용자 -->
-		 <h1>인증되지 않은 사용자</h1>
-		 </sec:authorize>
+
 
 </body>
 </html>

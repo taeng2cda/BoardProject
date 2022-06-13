@@ -11,16 +11,19 @@
 	<bean id="passwordEncoding" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	<bean id="customuserDetailService" class="com.spring.datatree.Security.CustomUserDetailService"/>
 	
+	
 	<!-- 요청에 따른 권한 설정 -->
-	<sec:http>
+	<sec:http auto-config="true">
 		<!-- 권한 설정 -->
 		<sec:intercept-url pattern="/authority_user/**" access="hasRole('ROLE_MEMBER')"/>
 		<sec:intercept-url pattern="/authority_admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<sec:intercept-url pattern="/**" access="permitAll"/>
+		
 		<!-- 로긴 페이지 설정 -->
-		<sec:form-login login-page="/login"/>
+		<sec:form-login login-page="/login" />
+			
 		<!-- 로그아웃 설정  -->
-		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/"/>
+		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/" />
 		<sec:form-login/>
 	</sec:http>
 	

@@ -13,24 +13,24 @@ import com.spring.datatree.Vo.Users_AuthorityVo;
 public class CustomUserDetail implements UserDetails{
 	
 	private String userid;
-	private String password;
-	private String enabled;
+	private String pw;
+	private boolean enabled;
 	private List<Users_AuthorityVo> authList;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		ArrayList<GrantedAuthority> auths= new ArrayList<GrantedAuthority>();
-		for(Users_AuthorityVo vo : authList) {
+		ArrayList<GrantedAuthority> auths=new ArrayList<GrantedAuthority>();
+		for(Users_AuthorityVo vo:authList) {
 			auths.add(new SimpleGrantedAuthority(vo.getAuthority()));
 		}
-		//사용자 권한을 담은 컬렉션 객체를 리턴
+		//사용자 권한을 담은 컬렉션 객체 리턴
 		return auths;
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return password;
+		return pw;
 	}
 
 	@Override
@@ -41,25 +41,21 @@ public class CustomUserDetail implements UserDetails{
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
  
