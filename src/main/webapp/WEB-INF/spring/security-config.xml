@@ -10,21 +10,29 @@
 	<!-- 암호화 객체 -->
 	<bean id="passwordEncoding" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	<bean id="customuserDetailService" class="com.spring.datatree.Security.CustomUserDetailService"/>
-	
+	<bean id="loginFailHandler" class="com.spring.datatree.LoginHandler.LoginFailHandler" />
 
 	
 	<!-- 요청에 따른 권한 설정 -->
-	<sec:http auto-config="true">
+	<sec:http auto-config="true" >
 		<!-- 권한 설정 -->
 		<sec:intercept-url pattern="/authority_user/**" access="hasRole('ROLE_MEMBER')"/>
 		<sec:intercept-url pattern="/authority_admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<sec:intercept-url pattern="/**" access="permitAll"/>
 		
 		<!-- 로긴 페이지 설정 -->
-		<sec:form-login login-page="/login" username-parameter="userid" password-parameter="pw" />
+		<sec:form-login login-page="/login" 
+		username-parameter="userid" 
+		password-parameter="pw" 
+		authentication-failure-handler-ref="loginFailHandler"
+		/>
 			
 		<!-- 로그아웃 설정  -->
-		<sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/" />
+		<sec:logout logout-url="/logout" 
+		invalidate-session="true" 
+		logout-success-url="/" 
+		delete-cookies="true"
+		/>
 		<sec:form-login/>
 	</sec:http>
 	

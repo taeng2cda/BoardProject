@@ -1,8 +1,10 @@
 package com.spring.datatree.Controller;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,9 @@ public class LoginController {
 	@Autowired ServletContext servletContext;
 	
 	@GetMapping("/login/View")
-	public String loginView(Model model) {
+	public String loginView(HttpServletRequest request, Model model, Authentication authentication) {
+		String uri = request.getHeader("Referer"); //이전 경로
+		
 		return "login";
 	}
 
@@ -29,8 +33,4 @@ public class LoginController {
 		return "logout";
 	}
 
-	@RequestMapping("/loginFail")
-	public String loginFail() {
-		return "home";
-	}
 }

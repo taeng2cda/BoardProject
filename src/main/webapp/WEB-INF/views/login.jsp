@@ -12,6 +12,9 @@
 <h1>로그인 페이지</h1>
 
 <form:form method="post" action="${pageContext.request.contextPath}/login">
+		<c:if test="${LoginFailMessage!=null}">
+			<p> Error : <c:out value="${LoginFailMessage}"/> </p>
+		</c:if>
 	아이디 <br>
 	<input type="text" name="userid" value=""><br>
 	비밀번호 <br>
