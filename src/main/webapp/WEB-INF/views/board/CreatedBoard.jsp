@@ -14,19 +14,24 @@
 	<sec:authorize access="isAuthenticated()">
 		<sec:authentication property="principal.username"/>님 반갑습니다.
 	</sec:authorize>
-	${userid}
-	<form action="${pageContext.request.contextPath}/authority_user/CreatedBoard" method="post">
+	
+	<form:form action="${pageContext.request.contextPath}/authority_user/CreatedBoard" method="post">
+		<input type="hidden" name="userid" value="${userid}"> 
 		
 		글제목<br>
 		<input type="text" name="title" value=""> <br>
 		
 		글내용<br>
-		<input type="text" name="content" value=""> <br>
+		<textarea rows="10" cols="50" name="content"></textarea><br>
 		
-		작성자<br>
-		<input type="text" name="title" value="${principal.username }"> <br>
+		<input type="submit" value="등록하기">
+		<input type="button" value="목록으로" id="btn1" onclick="location='${pageContext.request.contextPath}/board' " >
 		
-	</form>
+	</form:form>
 	
 </body>
+
+<script type="text/javascript">
+	#btn
+</script>
 </html>

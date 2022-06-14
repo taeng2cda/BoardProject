@@ -22,4 +22,7 @@ public class BoardVo {
 	private Date boarddate;
 	
 
+	//가상컬럼
+	private String updatedate_String;
+	private String boarddate_String;
 }

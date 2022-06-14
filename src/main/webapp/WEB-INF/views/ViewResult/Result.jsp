@@ -8,18 +8,79 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>test</h1>
-
-<c:choose>
-	<c:when test="${UserInsert == 'success'} ">
-		<h1>회원 가입 성공!!</h1>
-		<a href="${pageContext.request.contextPath}/">축하 축하</a>
-	</c:when>
-	<c:when test="${UserInsert == 'fail'} ">
-		<h1>회원 가입 실패!!</h1>
-		<a href="${pageContext.request.contextPath}/">축하 축하</a>
-	</c:when>
-</c:choose>
+	
+	<c:if test="${UserInsert eq 'success' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/";
+		</script>
+	</c:if>
+	<c:if test="${UserInsert eq 'fail' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/";
+		</script>
+	</c:if>
+	
+	
+	<c:if test="${BoardInsert eq 'success' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	<c:if test="${BoardInsert eq 'fail' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	
+	
+	<c:if test="${BoardDetail eq 'fail' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	
+	
+	<c:if test="${BoardDelete eq 'success' }">
+		<script>
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	<c:if test="${BoardDelete eq 'fail' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	
+	
+	
+	<c:if test="${BoardView eq 'fail' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	
+	
+	<c:if test="${BoardUpdated eq 'success' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	<c:if test="${BoardUpdated eq 'fail' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/board";
+		</script>
+	</c:if>
+	
+	
 
 </body>
 </html>

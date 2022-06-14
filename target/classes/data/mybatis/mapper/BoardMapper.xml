@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mybatis.mapper.BoardMapper">
+
+	<insert id="BoardInsert" parameterType="com.spring.datatree.Vo.BoardVo">
+		insert into board values( board_seq.nextval,#{userid},#{title},#{content},#{count},sysdate,sysdate )
+	</insert>
+	
+	<!-- 태우 테스트 -->
+	<select id="BoardCount" resultType="int" parameterType="hashmap">
+		select NVL(count(*),0) cnt from board
+	</select>
+	
+	<select id="BoardSelectAll" parameterType="hashmap" resultType="com.spring.datatree.Vo.BoardVo">
+		select * from(
+		    select b.*, rownum rnum
+		    from (
+		        select * from board
+		        order by boarddate desc
+		    )b
+		)
+		<![CDATA[ where rnum >= #{startRow} and rnum <= #{endRow} ]]>
+	</select>
+	
+	<select id="BoardOneSelect" parameterType="int" resultType="com.spring.datatree.Vo.BoardVo">
+		select bnum,userid,title,content,count,
+		to_char(updatedate,'yyyy-mm-dd hh24:mi') updatedate_String,
+		to_char(boarddate,'yyyy-mm-dd hh24:mi') boarddate_String
+		from board where bnum = #{bnum}
+	</select>
+	
+	<update id="BoardPageCount" parameterType="int"  >
+		update board set count = count+1 where bnum = #{bnum} 
+	</update>
+	
+	<update id="BoardUpdated" parameterType="com.spring.datatree.Vo.BoardVo">
+		update board set title = #{title} , content = #{content} , updatedate = sysdate where bnum = #{bnum}
+	</update>
+	
+	<delete id="BoardDeleted" parameterType="int">
+		delete from board where bnum = #{bnum}
+	</delete>
+	
+</mapper>

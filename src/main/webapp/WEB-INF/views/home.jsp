@@ -22,14 +22,8 @@
 		</li>
 	</sec:authorize>
 	
-	<li><a href="${pageContext.request.contextPath}/authority_admin/main">main(member)</a></li>
-	<li><a href="${pageContext.request.contextPath}/authority_user/main">main(admin)</a></li>
 	<li><a href="${pageContext.request.contextPath}/board">게시판</a></li>
 </ul>
-
-<br>
-test<br>
-${userid}
 
 </body>
 </html>

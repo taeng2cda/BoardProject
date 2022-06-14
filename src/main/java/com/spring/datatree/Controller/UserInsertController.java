@@ -31,9 +31,11 @@ public class UserInsertController {
 		
 		try {
 			service.UserInsert(vo);
+			model.addAttribute("msg","회원가입 성공");
 			model.addAttribute("UserInsert","success");
 		}catch(Exception e) {
 			System.out.println("회원가입 실패 : " + e.getMessage() );
+			model.addAttribute("msg","회원가입 성공");
 			model.addAttribute("UserInsert","fail");
 		}
 		

@@ -1,5 +1,6 @@
 package com.spring.datatree.Security;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +11,9 @@ import com.spring.datatree.Vo.Users_AuthorityVo;
 
 
 // 사용자 인증에 대한 정보를 갖는 클래스
-public class CustomUserDetail implements UserDetails{
+public class CustomUserDetail implements UserDetails,Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	private String userid;
 	private String pw;

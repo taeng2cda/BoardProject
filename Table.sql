@@ -28,8 +28,8 @@ create table board
 (
 	bnum number(10) PRIMARY KEY, 	--글번호
 	userid varchar2(20) not null, 	--작성자 fk
-	title varchar2(20) not null,	--글제목
-	content varchar2(20) not null,	--글내용
+	title varchar2(1999) not null,	--글제목
+	content varchar2(1999) not null,	--글내용
 	count number(10),				--조회수
 	updatedate date,				--수정일
 	boarddate date					--작성일
