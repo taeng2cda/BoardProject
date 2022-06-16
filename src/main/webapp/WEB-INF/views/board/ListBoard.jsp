@@ -10,7 +10,6 @@
 </head>
 <body>
 <h1>게시판 리스트</h1>
-
 	<div class="table_box">
 		<table>
 			<tr>
@@ -33,28 +32,34 @@
 	</div>
 	
 	<div class="table_footer_box">
-		
+
+	<c:if test="${pu.startPageNum != 1}">
+		<a href="${pageContext.request.contextPath}/board?pageNum=${pu.startPageNum-1}&field=${field}&keyword=${keyword}">이전</a>
+	</c:if>
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }" >
 			<c:choose>
-				<c:when test="${1==param.pageNum }">
-					<a href="${pageContext.request.contextPath}/board?pageNum=${i}"><span style='color:blue'>${i }</span></a>
+				<c:when test="${i==param.pageNum }">
+					<span style='color:red'>${i }</span>
 				</c:when>
 				
 				<c:otherwise>
-					<a href="${pageContext.request.contextPath}/board?pageNum=${i}"><span style='color:gray'>${i }</span></a>
+					<a href="${pageContext.request.contextPath}/board?pageNum=${i}&field=${field}&keyword=${keyword}"><span style='color:black'>${i }</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-			
+	<c:if test="${pu.endPageNum < pu.totalPageCount}">
+		<a href="${pageContext.request.contextPath}/board?pageNum=${pu.endPageNum+1}&field=${field}&keyword=${keyword}">다음</a>
+	</c:if>
+
 		
-	    <form action="" method="get">
-		    <select name ="column">
-		        <option value="title" 	<c:if test="${column=='title' }">selected</c:if>>제목</option>
-		        <option value="content" <c:if test="${column=='content' }">selected</c:if> >내용</option>
-		        <option value="title-content" <c:if test="${column=='title-content' }">selected</c:if>>제목+내용</option>
-		        <option value="userid"	 <c:if test="${column=='userid' }">selected</c:if> >글쓴이</option>
+	    <form action="${pageContext.request.contextPath}/board" method="get">
+		    <select name ="field">
+		        <option value="title" 	<c:if test="${field=='title' }">selected</c:if>>제목</option>
+		        <option value="content" <c:if test="${field=='content' }">selected</c:if> >내용</option>
+		        <option value="tc" <c:if test="${field=='tc' }">selected</c:if>>제목+내용</option>
+		        <option value="user_id"	 <c:if test="${field=='user_id' }">selected</c:if> >글쓴이</option>
 		    </select>
-		    <input type="text" value="${search}" name="search">
+		    <input type="text" value="${keyword}" name="keyword">
 		    <input type="submit" value="🔍" id="searchbtn">
 		</form>          
 	</div>

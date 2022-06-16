@@ -7,17 +7,26 @@
 	<insert id="BoardInsert" parameterType="com.spring.datatree.Vo.BoardVo">
 		insert into board values( board_seq.nextval,#{userid},#{title},#{content},#{count},sysdate,sysdate )
 	</insert>
-	
-	<!-- 태우 테스트 -->
+
 	<select id="BoardCount" resultType="int" parameterType="hashmap">
 		select NVL(count(*),0) cnt from board
 	</select>
+	
+	 <sql id="search">
+		<if test="field == 'tc'">
+			where title like '%' || #{keyword} || '%' or content like '%' || #{keyword} || '%'
+		</if>
+		<if test="field=='title' or field=='content' or field=='userid'">
+			where ${field} like '%' || #{keyword} || '%'
+		</if>
+     </sql>
 	
 	<select id="BoardSelectAll" parameterType="hashmap" resultType="com.spring.datatree.Vo.BoardVo">
 		select * from(
 		    select b.*, rownum rnum
 		    from (
 		        select * from board
+		        <include refid="search"/>
 		        order by boarddate desc
 		    )b
 		)
