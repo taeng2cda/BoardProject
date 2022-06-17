@@ -41,7 +41,7 @@ public class BoardListController {
 	    model.addAttribute("keyword", keyword);
 		model.addAttribute("boardlist",boardlist);
 		model.addAttribute("pu",pu);
-		model.addAttribute("pageNum",pageNum);
+		
 		
 		return "board/ListBoard";
 	}

@@ -10,6 +10,9 @@
 </head>
 <body>
 <h1>게시판 리스트</h1>
+	<h2>test : ${pageNum }</h2>
+	<h2>test : ${pu.totalPageCount }</h2>
+
 	<div class="table_box">
 		<table>
 			<tr>
@@ -33,9 +36,16 @@
 	
 	<div class="table_footer_box">
 
-	<c:if test="${pu.startPageNum != 1}">
-		<a href="${pageContext.request.contextPath}/board?pageNum=${pu.startPageNum-1}&field=${field}&keyword=${keyword}">이전</a>
-	</c:if>
+
+	<c:choose>
+		<c:when test="${ pu.pageNum != 1}">
+			<a href="${pageContext.request.contextPath}/board?pageNum=${pu.pageNum-1}&field=${field}&keyword=${keyword}">이전</a>
+		</c:when>
+		<c:otherwise>
+			<span>이전</span>
+		</c:otherwise>
+	</c:choose>
+	
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }" >
 			<c:choose>
 				<c:when test="${i==param.pageNum }">
@@ -47,10 +57,16 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-	<c:if test="${pu.endPageNum < pu.totalPageCount}">
-		<a href="${pageContext.request.contextPath}/board?pageNum=${pu.endPageNum+1}&field=${field}&keyword=${keyword}">다음</a>
-	</c:if>
-
+	
+	<c:choose>
+		<c:when test="${ pu.pageNum < pu.totalPageCount}">
+			<a href="${pageContext.request.contextPath}/board?pageNum=${pu.pageNum+1}&field=${field}&keyword=${keyword}">다음</a>
+		</c:when>
+		<c:otherwise>
+			<span>다음</span>
+		</c:otherwise>
+	</c:choose>
+		
 		
 	    <form action="${pageContext.request.contextPath}/board" method="get">
 		    <select name ="field">
