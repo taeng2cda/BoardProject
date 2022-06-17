@@ -29,7 +29,7 @@ public class BoardListController {
 		map.put("keyword", keyword);
 		
 		int totalRowCOunt = service.BoardCount(map);
-		PageUtil pu = new PageUtil(pageNum, 10,10, totalRowCOunt);
+		PageUtil pu = new PageUtil(pageNum, 10,5, totalRowCOunt);
 		
 		int startRow = pu.getStartRow();
 		int endRow = pu.getEndRow();
