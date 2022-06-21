@@ -10,8 +10,6 @@
 </head>
 <body>
 <h1>게시판 리스트</h1>
-	<h2>test : ${pageNum }</h2>
-	<h2>test : ${pu.totalPageCount }</h2>
 
 	<div class="table_box">
 		<table>

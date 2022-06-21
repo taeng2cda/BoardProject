@@ -15,6 +15,14 @@
 	
 	<!-- 요청에 따른 권한 설정 -->
 	<sec:http auto-config="true" >
+		 <sec:headers>
+			<sec:frame-options disabled="true"/>
+		</sec:headers>
+		
+		<sec:csrf disabled="true" />
+			
+		
+	
 		<!-- 권한 설정 -->
 		<sec:intercept-url pattern="/authority_user/**" access="hasRole('ROLE_MEMBER')"/>
 		<sec:intercept-url pattern="/authority_admin/**" access="hasRole('ROLE_ADMIN')"/>
