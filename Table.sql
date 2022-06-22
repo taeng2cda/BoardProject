@@ -2,7 +2,6 @@ drop table board;
 drop table authority;
 drop table users;
 drop sequence board_seq;
-drop sequence tuser_seq;
 
 
 -- 유저테이블 시큐리티 적용테이블
