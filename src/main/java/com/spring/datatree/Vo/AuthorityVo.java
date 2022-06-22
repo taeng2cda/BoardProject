@@ -9,7 +9,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @Data
 @ToString
-public class Users_AuthorityVo {
+public class AuthorityVo {
 	private String userid;
 	private String authority;
+	
+	
+	//superadmin
+	//admin
+	//member
 }

@@ -12,7 +12,7 @@
 <h1>회원 가입</h1>
 
 <div id="box1">
-	<form:form method="post" action="${pageContext.request.contextPath}/user/insert">
+	<form method="post" action="${pageContext.request.contextPath}/user/insert">
 	        <fieldset>
 	            <ul>
 	                <li>
@@ -48,7 +48,7 @@
 	            </ul>
 	        </fieldset>
 	        <input type="submit" value="회원 가입" id="btn">
-	</form:form>
+	</form>
 </div>
 </body>
 </html>

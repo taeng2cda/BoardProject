@@ -16,7 +16,6 @@ public class UsersVo {
 	private String pw;
 	private String name;
 	private String phone;
-	private String enabled;
 	private Date regdate;
 	
 }

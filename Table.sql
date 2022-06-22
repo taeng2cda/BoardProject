@@ -1,23 +1,31 @@
+drop table board;
+drop table authority;
+drop table users;
+drop sequence board_seq;
+drop sequence tuser_seq;
+
+
 -- 유저테이블 시큐리티 적용테이블
 create table users
 (
     userid varchar2(20) PRIMARY KEY,
-    pw varchar2(20) not null,
+    pw varchar2(1999) not null,
     name varchar2(11),
     phone varchar2(20),
-    regdate Date,
-    enabled char(1) default '1'
+    regdate Date
 );
 
 
 -- 유저 권한테이블
-create table users_authority
+create table authority
 (
     userid varchar2(20) not null,
     authority varchar2(50) not null,
     constraint fk_authority_users  foreign key(userid) references users(userid)
 );
-
+/*
+ * authority 
+ */
 
 -- 유니크인덱스
 create unique index ix_auth_userid on users_authority ( userid , authority );

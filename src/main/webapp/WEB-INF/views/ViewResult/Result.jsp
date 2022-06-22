@@ -9,16 +9,28 @@
 </head>
 <body>
 	
-	<c:if test="${UserInsert eq 'success' }">
+	<c:if test="${UsersInsert eq 'success' }">
 		<script>
 		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/login";
+		</script>
+	</c:if>
+	<c:if test="${UsersInsert eq 'fail' }">
+		<script>
+		    alert("${msg}");
+		    location.href = "${pageContext.request.contextPath}/user/insert";
+		</script>
+	</c:if>
+	
+	<c:if test="${Login eq 'success' }">
+		<script>
 		    location.href = "${pageContext.request.contextPath}/";
 		</script>
 	</c:if>
-	<c:if test="${UserInsert eq 'fail' }">
+	<c:if test="${Login eq 'fail' }">
 		<script>
 		    alert("${msg}");
-		    location.href = "${pageContext.request.contextPath}/";
+		    location.href = "${pageContext.request.contextPath}/login";
 		</script>
 	</c:if>
 	
