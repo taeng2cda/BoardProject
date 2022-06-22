@@ -28,7 +28,7 @@ public class BoardCreatedController {
 	
 	@Autowired BoardService service;
 
-	@GetMapping("/authority_user/CreatedBoard")
+	@GetMapping("/board/CreatedBoard")
 	public String BoardView(Model model,Principal principal) {
 		String userid = principal.getName();
 		
@@ -36,7 +36,7 @@ public class BoardCreatedController {
 		return "board/CreatedBoard";
 	}
 	
-	@PostMapping("/authority_user/CreatedBoard")
+	@PostMapping("/board/CreatedBoard")
 	public String BoardCreated(Model model,BoardVo vo) {
 		
 		System.out.println(vo.toString());
@@ -56,7 +56,7 @@ public class BoardCreatedController {
 	}
 	
 	
-	@RequestMapping("/authority_user/photoUpload.do")
+	@RequestMapping("/board/photoUpload.do")
 	public String photoImg(HttpServletRequest req,PhotoVo vo) {
 		System.out.println("단일");
 		String callback = vo.getCallback();
@@ -97,7 +97,7 @@ public class BoardCreatedController {
 	}
 	
 	
-	@RequestMapping("/authority_user/multiplephotoUpload.do")
+	@RequestMapping("/board/multiplephotoUpload.do")
 	public void photoImg(HttpServletRequest req,HttpServletResponse resp) {
 		System.out.println("멀티");
 		try {

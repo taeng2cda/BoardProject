@@ -335,7 +335,7 @@
     	var tempFile,
     		sUploadURL;
     	
-    	sUploadURL= '/datatree/authority_user/multiplephotoUpload.do'; 	//upload URL
+    	sUploadURL= '/datatree/board/multiplephotoUpload.do'; 	//upload URL
     	
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
@@ -479,7 +479,7 @@
  	 */
  	function callFileUploader (){
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
- 			sUrl  : '/authority_user/photoUpload.do',	//샘플 URL입니다.
+ 			sUrl  : '/board/photoUpload.do',	//샘플 URL입니다.
  	        sCallback : '/datatree/resources/static/smarteditor/sample/photo_uploader/callback.html',	//업로드 이후에 iframe이 redirect될 콜백페이지의 주소
  	    	sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//허용할 파일의 형식. ex) "*", "*.*", "*.jpg", 구분자(;)	
  	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP 확장자만 가능합니다',	//허용할 파일의 형식이 아닌경우에 띄워주는 경고창의 문구

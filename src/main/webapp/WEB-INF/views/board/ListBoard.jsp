@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +22,7 @@
 			<c:forEach var="vo" items="${boardlist }" >
 				<tr>
 					<td id="td1"> ${vo.bnum } </td>
-			        <td id="td2"> <a href="${pageContext.request.contextPath}/authority_user/boarddetail?bnum=${vo.bnum}">${vo.title }</a> </td>
+			        <td id="td2"> <a href="${pageContext.request.contextPath}/board/boarddetail?bnum=${vo.bnum}">${vo.title }</a> </td>
 			        <td id="td3"> ${vo.userid }</td>
 			        <td id="td4"> ${vo.boarddate }</td>
 			        <td id="td5"> ${vo.count }</td>
@@ -78,7 +77,7 @@
 		</form>          
 	</div>
 	
-	<button id="BoardCreated" onclick='location.href="${pageContext.request.contextPath}/authority_user/CreatedBoard" ' >글쓰기</button>   
+	<button id="BoardCreated" onclick='location.href="${pageContext.request.contextPath}/board/CreatedBoard" ' >글쓰기</button>   
 	        
 </body>
 

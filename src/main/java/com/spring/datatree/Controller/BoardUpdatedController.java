@@ -17,7 +17,7 @@ public class BoardUpdatedController {
 	@Autowired BoardService service;
 	
 	
-	@PostMapping("/authority_user/ViewUpdatedBoard")
+	@PostMapping("/board/ViewUpdatedBoard")
 	public String BoardUpdateView(Model model,BoardVo vo,Principal principal) {
 		
 		String userid = principal.getName();
@@ -37,7 +37,7 @@ public class BoardUpdatedController {
 	
 	
 	
-	@PostMapping("/authority_user/UpdatedBoard")
+	@PostMapping("/board/UpdatedBoard")
 	public String BoardUpdate(Model model,BoardVo vo,Principal principal) {
 		
 		String userid = principal.getName();

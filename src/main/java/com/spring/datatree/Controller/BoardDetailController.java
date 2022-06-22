@@ -16,7 +16,7 @@ public class BoardDetailController {
 	
 	@Autowired BoardService service;
 	
-	@GetMapping("/authority_user/boarddetail")
+	@GetMapping("/board/boarddetail")
 	public String BoardDetailView(Model model,BoardVo vo,Principal principal) {
 		String userid = principal.getName();
 		model.addAttribute("userid",userid);
@@ -36,7 +36,7 @@ public class BoardDetailController {
 	}
 	
 	
-	@PostMapping("/authority_user/DeletedBoard")
+	@PostMapping("/board/DeletedBoard")
 	public String BoardDeleted(Model model,BoardVo vo,Principal principal) {
 		
 		try {

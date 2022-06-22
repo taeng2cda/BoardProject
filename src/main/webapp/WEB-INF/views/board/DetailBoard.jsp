@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +38,11 @@
 					<button id="BoardDeleted" onclick='dropboard()' >글삭제</button>
 					
 					<button id="BoardList" onclick='location.href="${pageContext.request.contextPath}/board" ' >글목록</button>
-					<button id="BoardCreated" onclick='location.href="${pageContext.request.contextPath}/authority_user/CreatedBoard" ' >글쓰기</button> 
+					<button id="BoardCreated" onclick='location.href="${pageContext.request.contextPath}/board/CreatedBoard" ' >글쓰기</button> 
 				</c:when>
 				<c:otherwise>
 					<button id="BoardList" onclick='location.href="${pageContext.request.contextPath}/board" ' >글목록</button>
-					<button id="BoardCreated" onclick='location.href="${pageContext.request.contextPath}/authority_user/CreatedBoard" ' >글쓰기</button> 
+					<button id="BoardCreated" onclick='location.href="${pageContext.request.contextPath}/board/CreatedBoard" ' >글쓰기</button> 
 				</c:otherwise>
 			</c:choose>
 			
@@ -52,13 +51,13 @@
 	</div>
 	
 	<%-- 게시글 삭제 데이터  --%>
-	<form:form id="frm1" method="post" action="${pageContext.request.contextPath}/authority_user/DeletedBoard">
+	<form id="frm1" method="post" action="${pageContext.request.contextPath}/board/DeletedBoard">
 		<input type="hidden" name="bnum" value="${vo.bnum }">
-	</form:form>
+	</form>
 	<%-- 게시글 수정 데이터  --%>
-	<form:form id="frm2" method="post" action="${pageContext.request.contextPath}/authority_user/ViewUpdatedBoard">
+	<form id="frm2" method="post" action="${pageContext.request.contextPath}/board/ViewUpdatedBoard">
 		<input type="hidden" name="bnum" value="${vo.bnum }">
-	</form:form>
+	</form>
 </body>
 
 <style>
