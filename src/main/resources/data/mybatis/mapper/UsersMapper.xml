@@ -14,7 +14,7 @@
 		insert into authority values(#{userid},#{authority})
 	</insert>
 
-	<select id="UsersLogin" parameterType="com.spring.datatree.Vo.UsersVo" resultType="com.spring.datatree.Vo.UsersVo" >
+	<select id="UsersLogin" parameterType="hashmap" resultType="com.spring.datatree.Vo.UsersVo" >
 		select * from users where userid = #{userid} and pw = #{pw}
 	</select>
 	

@@ -22,18 +22,6 @@
 		</script>
 	</c:if>
 	
-	<c:if test="${Login eq 'success' }">
-		<script>
-		    location.href = "${pageContext.request.contextPath}/";
-		</script>
-	</c:if>
-	<c:if test="${Login eq 'fail' }">
-		<script>
-		    alert("${msg}");
-		    location.href = "${pageContext.request.contextPath}/login";
-		</script>
-	</c:if>
-	
 	
 	<c:if test="${BoardInsert eq 'success' }">
 		<script>

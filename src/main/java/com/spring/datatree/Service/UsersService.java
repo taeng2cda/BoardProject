@@ -1,5 +1,7 @@
 package com.spring.datatree.Service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +22,8 @@ public class UsersService {
 		return usersmapper.AuthorityInsert(vo);
 	}
 	
-	public UsersVo UsersLogin(UsersVo vo) {
-		return usersmapper.UsersLogin(vo);
+	public UsersVo UsersLogin(HashMap<String, String> map) {
+		return usersmapper.UsersLogin(map);
 	}
 	public AuthorityVo SelectAuthority(String userid) {
 		return usersmapper.SelectAuthority(userid);

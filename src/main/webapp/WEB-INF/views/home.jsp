@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<h1>${userid }</h1>
+
 	<c:choose>
 		<c:when test="${not empty userid && not empty authority}">
 			<a href="${pageContext.request.contextPath}/user/insert">회원가입</a>
@@ -23,6 +25,6 @@
 		</c:otherwise>
 	</c:choose>
 	
-
+	<h1><a href="${pageContext.request.contextPath}/test">TEST</a></h1>
 </body>
 </html>
