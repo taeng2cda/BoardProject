@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.spring.datatree.Service.UsersService;
 import com.spring.datatree.Util.MD5;
+import com.spring.datatree.Vo.AuthorityVo;
 import com.spring.datatree.Vo.UsersVo;
 
 @Controller
@@ -28,6 +29,8 @@ public class LoginController {
 		mv.setViewName("login");
 		return mv;
 	}
+	
+	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public @ResponseBody Object Login(@RequestBody HashMap<String,String> loginMap,HttpServletRequest req,Model model )throws Exception {
@@ -44,10 +47,11 @@ public class LoginController {
 		
 		try {
 			UsersVo vo = service.UsersLogin(loginMap);
+			AuthorityVo avo = service.SelectAuthority(vo.getUserid());
 			
-			if(vo != null) {
+			if(vo != null && avo != null) {
 				session.setAttribute("userid", vo.getUserid());
-				
+				session.setAttribute("authority",avo.getAuthority() );
 				return 1;
 			}else {
 				return 0;
@@ -59,34 +63,8 @@ public class LoginController {
 		}
 		
 	}
-//	@PostMapping("/login")
-//	public String Login(Model model,UsersVo vo,HttpServletRequest req) throws Exception {
-//		
-//		String userid = vo.getUserid();
-//		String pw = MD5.MD5(vo.getPw());
-//		vo.setPw(pw);
-//		System.out.println(vo.toString());
-//		HttpSession session = req.getSession();
-//		UsersVo uvo = service.UsersLogin(vo);
-//		AuthorityVo avo = service.SelectAuthority(userid);
-//		
-//		
-//		if(uvo != null) {
-//			
-//			session.setAttribute("userid",vo.getUserid() );
-//			session.setAttribute("authority", avo.getAuthority());
-//			
-//			model.addAttribute("Login","success");
-//			
-//		}else {
-//			
-//			model.addAttribute("msg","아이디 또는 비밀번호가 틀립니다.");
-//			model.addAttribute("Login","fail");
-//		}
-//		
-//		
-//		return "ViewResult/Result";
-//	}
+
+	
 	
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest req) {
