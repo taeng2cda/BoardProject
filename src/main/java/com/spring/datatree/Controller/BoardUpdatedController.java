@@ -23,8 +23,6 @@ public class BoardUpdatedController {
 	@PostMapping("/board/ViewUpdatedBoard")
 	public String BoardUpdateView(Model model,BoardVo vo, HttpServletRequest req) {
 		
-		
-
 		try {
 		vo = service.BoardOneSelect(vo.getBnum());
 		model.addAttribute("vo",vo);
@@ -40,10 +38,8 @@ public class BoardUpdatedController {
 	
 	
 	@PostMapping("/board/UpdatedBoard")
-	public String BoardUpdate(Model model,BoardVo vo,Principal principal) {
+	public String BoardUpdate(Model model,BoardVo vo) {
 		
-		String userid = principal.getName();
-		model.addAttribute("userid",userid);
 		System.out.println(vo.toString());
 		try {
 			service.BoardUpdated(vo);
