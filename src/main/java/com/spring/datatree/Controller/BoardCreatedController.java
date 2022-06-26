@@ -29,10 +29,8 @@ public class BoardCreatedController {
 	@Autowired BoardService service;
 
 	@GetMapping("/board/CreatedBoard")
-	public String BoardView(Model model,Principal principal) {
-		String userid = principal.getName();
-		
-		model.addAttribute("userid",userid);
+	public String BoardView(Model model) {
+
 		return "board/CreatedBoard";
 	}
 	

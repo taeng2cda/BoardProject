@@ -40,7 +40,6 @@ public class LoginController {
 		if(session.getAttribute("userid") != null) {
 			session.removeAttribute("userid");
 		}
-		System.out.println("TEST");
 		String password = loginMap.get("pw");
 		String pw = MD5.MD5(password);
 		loginMap.replace("pw", pw);

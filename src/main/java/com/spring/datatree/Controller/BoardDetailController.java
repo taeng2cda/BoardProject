@@ -1,6 +1,12 @@
 package com.spring.datatree.Controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +23,23 @@ public class BoardDetailController {
 	@Autowired BoardService service;
 	
 	@GetMapping("/board/boarddetail")
-	public String BoardDetailView(Model model,BoardVo vo,Principal principal) {
-		String userid = principal.getName();
-		model.addAttribute("userid",userid);
+	public String BoardDetailView(Model model,BoardVo vo ,HttpServletResponse resp,HttpServletRequest req) throws IOException {
+		
+		HttpSession session = req.getSession();
+		String userid = (String) session.getAttribute("userid");
+		System.out.println("userid : " + userid);
+		if(userid == null) {
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out = resp.getWriter(); 
+						out.println("<script>");
+						out.println("alert('로그인이 필요합니다');");
+						out.println("location.href='"+req.getContextPath()+"/logout';"); 
+						out.println("</script>");
+						out.close(); 
+						return "home";
+		}
+		
+		
 		int bnum = vo.getBnum();
 		
 		try {

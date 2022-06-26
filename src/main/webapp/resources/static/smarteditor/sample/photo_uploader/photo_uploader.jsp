@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -60,12 +59,12 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
 	    	 그밖의 경우 pop_container2 클래스와 하위 HTML 적용      -->
 	<div id="pop_container2" class="pop_container2">
     	<!-- content -->
-		<form:form id="editor_upimage" name="editor_upimage" method="post" enctype="multipart/form-data" onSubmit="return false;">
+		<form id="editor_upimage" name="editor_upimage" method="post" enctype="multipart/form-data" onSubmit="return false;">
         <div id="pop_content2">
 			<input type="file" class="upload" id="uploadInputBox" name="Filedata">
             <p class="dsc" id="info"><strong>10MB</strong>이하의 이미지 파일만 등록할 수 있습니다.<br>(JPG, GIF, PNG, BMP)</p>
         </div>
-		</form:form>
+		</form>
         <!-- //content -->
     </div>
     <div id="pop_container" class="pop_container" style="display:none;">

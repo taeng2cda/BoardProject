@@ -33,7 +33,7 @@
 		
 		<div class="btn_box">
 			<c:choose>
-				<c:when test="${userid eq vo.userid }">
+				<c:when test="${not empty userid && userid eq vo.userid }">
 					<button id="BoardUpdated" onclick='updateboard()' >글수정</button>
 					<button id="BoardDeleted" onclick='dropboard()' >글삭제</button>
 					
