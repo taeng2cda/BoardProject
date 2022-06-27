@@ -15,8 +15,8 @@ public class BoardService {
 	
 	@Autowired private BoardMapper mapper;
 	
-	public int BoardInsert(BoardVo vo) {
-		return mapper.BoardInsert(vo);
+	public int BoardInsert(HashMap<String,Object> map) {
+		return mapper.BoardInsert(map);
 	}
 	
 	public int BoardCount(HashMap<String, Object> map) {

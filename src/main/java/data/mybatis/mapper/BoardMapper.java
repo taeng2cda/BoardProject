@@ -7,7 +7,7 @@ import com.spring.datatree.Vo.BoardVo;
 
 public interface BoardMapper {
 	
-	int BoardInsert(BoardVo vo);
+	int BoardInsert(HashMap<String, Object> map);
 	int BoardCount(HashMap<String, Object> map);
 	List<BoardVo> BoardSelectAll(HashMap<String, Object> map);
 	BoardVo BoardOneSelect(int bnum);

@@ -62,6 +62,8 @@ $(function() {
 				}else if(result == 1){
 					alert("로긴 성공");
 					 location.href = ctx;
+				}else if(result == 9){
+					alert("아이디 또는 비밀번호가 잘못되었습니다.");
 				}
 				
 			},

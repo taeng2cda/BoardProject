@@ -7,17 +7,23 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.datatree.Service.BoardService;
 import com.spring.datatree.Vo.BoardVo;
@@ -28,30 +34,36 @@ public class BoardCreatedController {
 	
 	@Autowired BoardService service;
 
+	//VIEW 페이지 리턴
 	@GetMapping("/board/CreatedBoard")
 	public String BoardView(Model model) {
 
 		return "board/CreatedBoard";
 	}
 	
-	@PostMapping("/board/CreatedBoard")
-	public String BoardCreated(Model model,BoardVo vo) {
+	
+	@RequestMapping(value="/board/CreatedBoard", method=RequestMethod.POST,produces= {MediaType.APPLICATION_JSON_VALUE})
+	@ResponseBody
+	public HashMap<String,Object> BoardCreated(@RequestBody HashMap<String,Object> cmap, MultipartFile[] upload,HttpServletRequest req) {
 		
-		System.out.println(vo.toString());
-		vo.setCount(0);
+		System.out.println("map : "+ cmap.toString());
 		
-		try {
-			service.BoardInsert(vo);
-			model.addAttribute("msg","정상등록 되었습니다");
-			model.addAttribute("BoardInsert","success");
+		// 파일 업로드 테스트
+//		String saveDir = req.getSession().getServletContext().getRealPath("/resources/upload/file");
+//		File dir = new File(saveDir);
+//		if(!dir.exists()) {
+//			dir.mkdirs();
+//		}
 		
-		}catch(Exception e) {
-			System.out.println("게시판 생성 실패 : "+ e.getMessage());
-			model.addAttribute("msg","게시글 생성에 실패하였습니다");
-			model.addAttribute("BoardInsert","fail");
-		}
-		return "ViewResult/Result";
+		
+		//성공시 1 리턴
+		int a = service.BoardInsert(cmap);
+		System.out.println("결과 : "+ a);
+		
+		return cmap;
 	}
+	
+	
 	
 	
 	@RequestMapping("/board/photoUpload.do")

@@ -25,7 +25,8 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<h1><a href="${pageContext.request.contextPath}/test">TEST</a></h1>
+	<h1><a href="${pageContext.request.contextPath}/test">TEST1</a></h1>
+	<h1><a href="${pageContext.request.contextPath}/test2">TEST2</a></h1>
 </body>
 
 </html>

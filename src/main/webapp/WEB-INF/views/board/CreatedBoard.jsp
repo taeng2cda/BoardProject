@@ -20,23 +20,31 @@
 <body>
 <h1>Created Board</h1>
 	
-	<form action="${pageContext.request.contextPath}/board/CreatedBoard" method="post" id="frm">
-	<input type="hidden" name="userid" value="${userid}">
+	<input type="hidden" name="userid" value="${userid}" id="userid">
     <input type="text" name="title" id="title">
-      <div id="smarteditor">
+    <div id="smarteditor">
         <textarea name="content" id="editorTxt" 
                   rows="30" cols="20" style="width:650px; height:350px; "
                   placeholder="내용을 입력해주세요"
                   style="width: 500px"></textarea>
-      </div>
-      <input type="button"  id="save" value="버튼"/>
-      <input type="button" value="목록으로" id="btn1" onclick="location='${pageContext.request.contextPath}/board' " >
+   	</div>
+    <label><input type="file" name="upload" /></label>
+    <label><input type="file" name="upload" /></label>
+
+    <input type="button"  id="save" value="버튼"/>
+    <input type="button" value="목록으로" id="btn1" onclick="location='${pageContext.request.contextPath}/board' " >
 		
-    </form>
     
 </body>
 
 <script type="text/javascript">
+sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
+var ctx = getContextPath();
+  function getContextPath() {
+  return sessionStorage.getItem("contextpath");
+}
+  
+  console.log(ctx);
 
 var oEditors = [];
 $(function(){
@@ -44,7 +52,7 @@ $(function(){
           oAppRef: oEditors,
           elPlaceHolder: "editorTxt", //textarea에서 지정한 id와 일치해야 합니다. 
           //SmartEditor2Skin.html 파일이 존재하는 경로
-          sSkinURI: "/datatree/resources/static/smarteditor/SmartEditor2Skin.jsp",  
+          sSkinURI: ctx+"/resources/static/smarteditor/SmartEditor2Skin.jsp",  
           htParams : {
               // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
               bUseToolbar : true,             
@@ -78,7 +86,34 @@ $(function(){
         	  return;
           }
           
-          $("#frm").submit();
+          var id = $("#userid").val();
+          var t = $("#title").val();
+          var c = $("#editorTxt").val();
+         
+          var boarddata = {
+        		  'userid':id,
+        		  'title':t,
+        		  'content':c,
+        		  'count':'0'
+          };
+          
+          $.ajax({
+      		type:"post",
+    		url: ctx + "/board/CreatedBoard",
+    		data : JSON.stringify(boarddata),
+    		dataType:"json",
+    		contentType: 'application/json',
+    		success :function(data){
+    			alert("정상등록 되었습니다.");
+    			location.href = ctx+"/board";
+    		},
+    		error : function() {
+    			alert("Error");
+    		}
+          });
+          
+          
+          
      		 });    
 		});
 </script>
