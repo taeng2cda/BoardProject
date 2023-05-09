@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/* header 부분 */-->
+<div th:fragment="header" class="#">
+<header>
+	<div class="header_container">
+
+	    <div class="container_notice">
+	        <div class="notice_img"><img alt="Kim Taewoo" src="/image/taewoo.png"></div>
+	        <h3 class="notice_name">anonymous</h3>
+	    </div>
+
+	    <div class="container_Title">
+	        <span>Title_Title_Title_Title_Title</span>
+	    </div>
+	    
+		<div class="container_login">
+	        <div id="login_div" class="login_item" style="border-bottom: 1px solid #efefef;" th:if="${userid == null}">
+	        	로그인
+	        </div>
+	        <div id="login_div" class="login_item" style="border-bottom: 1px solid #efefef;" th:if="${userid != null}">
+	        	로그아웃
+	        </div>
+	        <div class="login_item">
+	        	<a href="#">회원가입</a>
+	        </div>
+	    </div>
+	</div>
+</header>
+</div>
+</html>

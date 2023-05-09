@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  font-family: 'NanumSquare', 'sans-serif';
+  background-color: var(--color-light-grey);
+}
+
+#header {
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 90vw;
+}
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-white);
+  align-items: center;
+  max-width: 1400px;
+  height: 150px;
+  margin: auto;
+  border-radius: var(--size-border-radius);
+}
+.notice_img{
+	display: block;
+    width: auto;
+    height: auto;
+}
+.notice_img img{
+	padding: 5px;
+    border: 1px solid #cfd8d2;
+	max-width: 110px;
+    border-radius: 50%;
+    background-color: #828282;
+}
+.notice_name{
+	margin-top: 10px;
+	margin: 0;
+	font-family: Georgia, "맑은 고딕", serif;
+}
