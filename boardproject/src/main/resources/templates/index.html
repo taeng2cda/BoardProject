@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<th:block th:replace="/common/layout.html :: head('Peer')"></th:block>
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="/common/layout.html :: head('SpringBootProject')"></th:block>
+</head>
+<body>
 <th:block th:replace="/common/header :: header"></th:block>
-<th:block th:replace="/common/leftbar :: leftbar"></th:block>
-<div>
-<h1>content</h1>
+<div class="mainbox">
+	<th:block th:replace="/common/leftbar :: leftbar"></th:block>
+
+	<div class="content">
+	
+		<h1>content</h1>
+
+		
+	</div>
 </div>
-<th:block th:replace="/common/footer :: footer"></th:block>
+</body>
 </html>

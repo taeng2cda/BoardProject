@@ -11,18 +11,18 @@
 	    </div>
 
 	    <div class="container_Title">
-	        <span>Title_Title_Title_Title_Title</span>
+	        <span>한글한글한글한글abcdEFGH </span>
 	    </div>
 	    
 		<div class="container_login">
-	        <div id="login_div" class="login_item" style="border-bottom: 1px solid #efefef;" th:if="${userid == null}">
-	        	로그인
+	        <div id="login_div" class="login_item"  th:if="${userid == null}">
+	        	<span>로그인</span>
 	        </div>
-	        <div id="login_div" class="login_item" style="border-bottom: 1px solid #efefef;" th:if="${userid != null}">
-	        	로그아웃
+	        <div id="login_div" class="login_item"  th:if="${userid != null}">
+	        	<span>로그아웃</span>
 	        </div>
-	        <div class="login_item">
-	        	<a href="#">회원가입</a>
+	        <div id="join_btn" class="login_item">
+	        	<span>회원가입</span>
 	        </div>
 	    </div>
 	</div>

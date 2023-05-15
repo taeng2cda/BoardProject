@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!--/* header 부분 */-->
-<div th:fragment="leftbar" class="#">
-<h1>leftbar</h1>
-</div>
+	<div th:fragment="leftbar" class="leftbar">
+		
+		<div class="top_bar_box">
+			<div class="icon_box"><img alt="South Korea" src="/image/icon-location.png" class="icon_img"><span class="icon_text">South Korea</span></div>
+			<div class="icon_box"><img alt="Email" src="/image/icon-email.png" class="icon_img"><span class="icon_text">Email</span></div>
+			<div class="icon_box"><img alt="GitHub" src="/image/icon-github.png" class="icon_img"><span class="icon_text">GitHub</span></div>
+		</div>
+		
+		<div class="left_bar_box">
+			<div class="left_in_main_box">카테고리</div>
+			<div class="left_in">
+				<div class="left_in_box">1. 한글</div>
+				<div class="left_in_box">2. Eng</div>
+				<div class="left_in_box">3. 123</div>
+				<div class="left_in_box">4. TEST</div>
+			</div>
+		</div>
+	</div>
+	
 </html>

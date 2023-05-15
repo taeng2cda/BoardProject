@@ -20,7 +20,7 @@ public class UserController {
 	public ModelAndView CreateUser( )throws Exception{
 		System.out.println("@@@");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("page/main");
+		mv.setViewName("test");
 		return mv;
 	}
 	
